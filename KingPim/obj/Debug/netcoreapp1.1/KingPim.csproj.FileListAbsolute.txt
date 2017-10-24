@@ -1,0 +1,4 @@
+C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp1.1\KingPim.csprojResolveAssemblyReference.cache
+C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp1.1\KingPim.csproj.CoreCompileInputs.cache
+C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp1.1\KingPim.AssemblyInfoInputs.cache
+C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp1.1\KingPim.AssemblyInfo.cs
