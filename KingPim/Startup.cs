@@ -55,16 +55,22 @@ namespace KingPim
 
             app.UseAuthentication();
 
-            
+
 
             app.UseMvc(routes =>
             {
+               
                 routes.MapRoute(
-                    name: "index",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                name: "Categories",
+                template: "categories",
+                defaults: new { Controller = "Categories", Action = "Index"});
+
+                routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+
             });
 
         }
-    
     }
 }

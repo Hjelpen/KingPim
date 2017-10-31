@@ -7,3 +7,13 @@
 }
 
 <h3>test!!!</h3>
+
+<p>Category catalog</p>
+@foreach (var item in ViewBag.Categories)
+{
+    <li>@item.Name</li>
+}
+
+<form action="/categories" method="post">
+    <button class="btn btn-success">New Category</button>
+</form>
