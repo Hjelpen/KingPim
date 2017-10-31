@@ -12,6 +12,11 @@ namespace KingPim.Controllers
     {
         public IActionResult Index()
         {
+            return RedirectToAction("Login", "Account");
+        }
+
+        public IActionResult LoggedIn()
+        {
             return View();
         }
 

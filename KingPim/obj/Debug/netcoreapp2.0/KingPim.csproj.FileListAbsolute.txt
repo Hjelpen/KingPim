@@ -10,3 +10,15 @@ C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\n
 C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.dll
 C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.pdb
 C:\Users\EricL\Documents\Visual Studio 2017\Projects\KingPim\KingPim\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.deps.json
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.runtimeconfig.json
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.runtimeconfig.dev.json
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.dll
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.pdb
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.csprojResolveAssemblyReference.cache
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.csproj.CoreCompileInputs.cache
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.AssemblyInfoInputs.cache
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.AssemblyInfo.cs
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.dll
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.pdb
+C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

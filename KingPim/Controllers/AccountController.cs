@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using KingPim.Models;
 using KingPim.Models.AccountViewModels;
 using KingPim.Services;
+using KingPim.Data;
 
 namespace KingPim.Controllers
 {
@@ -22,12 +23,14 @@ namespace KingPim.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
@@ -35,6 +38,8 @@ namespace KingPim.Controllers
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _context = context;
+            
         }
 
         [TempData]
@@ -65,7 +70,7 @@ namespace KingPim.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("LoggedIn", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -208,20 +213,26 @@ namespace KingPim.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewBag.Name = new SelectList(_context.Roles
+                                            .ToList(), "Name", "Name");
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+
+            ViewBag.Name = new SelectList(_context.Roles
+                                            .ToList(), "Name", "Name");
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -231,6 +242,7 @@ namespace KingPim.Controllers
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, model.UserRoles);
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
