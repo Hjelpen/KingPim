@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<KingPim.Models.SubCategory>
+
+@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,11 +11,24 @@
 <h3>test!!!</h3>
 
 <p>Category catalog</p>
-@foreach (var item in ViewBag.Categories)
+@foreach (var category in ViewBag.Categories)
 {
-    <li>@item.Name</li>
+    <li> @category.Name
+
+        @foreach (var subcategory in Model)
+        {
+            if (subcategory.CategoryID == category.CategoryID)
+            {
+                <ul>@subcategory.Name</ul>
+            }
+
+        }
+    </li>
 }
+   
+
+
 
 <form action="/categories" method="post">
-    <button class="btn btn-success">New Category</button>
+    <button class="btn btn-success">Manage Categories</button>
 </form>

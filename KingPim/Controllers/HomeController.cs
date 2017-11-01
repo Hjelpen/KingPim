@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KingPim.Models;
 using KingPim.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace KingPim.Controllers
 {
@@ -26,11 +27,9 @@ namespace KingPim.Controllers
         public IActionResult LoggedIn()
         {
 
-            var categories = _context.Categories.ToList();
+            ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
+            return View(_context.SubCategories.Include(c => c.Category).ToList());
 
-            ViewBag.Categories = categories;
-
-            return View();
         }
 
         public IActionResult Error()

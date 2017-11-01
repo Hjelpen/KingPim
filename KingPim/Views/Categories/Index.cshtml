@@ -1,4 +1,4 @@
-﻿@model KingPim.Models.Category
+﻿@model KingPim.Models.ModelViewModels.CategoryViewModel
 
 @{
     ViewData["Title"] = "Categories";
@@ -6,7 +6,6 @@
 }
 
 <h2>Categories</h2>
-
 
 <p>Create a new category!</p>
 
@@ -20,3 +19,17 @@
     </div>
 </form>
  
+<p>Create a new Subcategory!</p>
+
+
+
+@using (Html.BeginForm("CreateSubCategory", "Categories", FormMethod.Post))
+{
+    <div class="col-md-6">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="SubCategoryName" class="form-control" />     
+          @Html.DropDownList("Category", new SelectList(ViewBag.Categories, "CategoryID", "Name"))
+        <input type="submit" value="Create" class="btn btn-success pull-right" />
+        </div>
+
+}

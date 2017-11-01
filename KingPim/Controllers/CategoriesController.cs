@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using KingPim.Models;
 using KingPim.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using KingPim.Models.ModelViewModels;
 
 namespace KingPim.Controllers
 {
@@ -23,6 +25,8 @@ namespace KingPim.Controllers
         // GET: Categories
         public ActionResult Index()
         {
+            ViewBag.Categories = _context.Categories.ToList();
+
             return View();
         }
 
@@ -41,7 +45,7 @@ namespace KingPim.Controllers
         // POST: Categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category category)
+        public async Task<IActionResult> Create(CategoryViewModel category)
         {
             if (ModelState.IsValid)
             {
@@ -51,12 +55,39 @@ namespace KingPim.Controllers
                     CreatedAt = DateTime.UtcNow,
                     LastModified = DateTime.UtcNow,
                     Published = false,
-                    VersionNumber = category.VersionNumber + 1,
+                    VersionNumber = 0 + 1,
                     ModifiedBy = User.Identity.Name,           
                     
                 };
 
                 _context.Add(newCategory);
+                await _context.SaveChangesAsync();
+
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Categories/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateSubCategory(CategoryViewModel model, int category)
+        {
+            if (ModelState.IsValid)
+            {
+                SubCategory newSubCategory = new SubCategory
+                {
+                    Name = model.SubCategoryName,
+                    CategoryID = category,
+                    CreatedAt = DateTime.UtcNow,
+                    LastModified = DateTime.UtcNow,
+                    Published = false,
+                    VersionNumber = 0 + 1,
+                    ModifiedBy = User.Identity.Name,
+
+                };
+
+                _context.Add(newSubCategory);
                 await _context.SaveChangesAsync();
 
             }
