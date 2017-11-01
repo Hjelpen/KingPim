@@ -1,10 +1,25 @@
 ﻿
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@foreach (var item in ViewBag.CategoryInfo)
+{
+    <b>@item.Name</b>
+    <p>Created at: @item.CreatedAt</p> 
+    <p>Last Modified: @item.LastModified</p>
+    <p>Modified By: @item.ModifiedBy</p>
+    <p>Version number: @item.VersionNumber</p>
+    <p>Published: @item.Published</p>
+    
+    <h1>Subcategories</h1>
+    @foreach (var subcategory in item.SubCategories)
+    {
+        if (subcategory.CategoryID == item.CategoryID)
+        {
+            <ul>@subcategory.Name</ul>
+        }
 
-
-
-<p>Teeesssstt</p>
+    }
+}

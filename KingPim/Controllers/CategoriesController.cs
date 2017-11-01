@@ -9,6 +9,7 @@ using KingPim.Models;
 using KingPim.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using KingPim.Models.ModelViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace KingPim.Controllers
 {
@@ -36,9 +37,16 @@ namespace KingPim.Controllers
         // GET: Categories/Details/5
         public ActionResult Details(int id)
         {
+            var categoryInfo = _context.Categories.Where(x => x.CategoryID == id).Include(y => y.SubCategories).ToList();
 
+            ViewBag.CategoryInfo = categoryInfo;
 
-            return View();
+            if (categoryInfo == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryInfo);
         }
 
         // GET: Categories/Create
