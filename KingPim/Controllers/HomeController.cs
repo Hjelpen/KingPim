@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using KingPim.Models;
 using KingPim.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingPim.Controllers
 {
@@ -24,6 +25,7 @@ namespace KingPim.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [Authorize]
         public IActionResult LoggedIn()
         {
 

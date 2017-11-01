@@ -12,5 +12,7 @@ namespace KingPim.Models.ModelViewModels
       
         public Category Category { get; set; }
         public string SubCategoryName { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

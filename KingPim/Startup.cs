@@ -59,11 +59,17 @@ namespace KingPim
 
             app.UseMvc(routes =>
             {
+
                
                 routes.MapRoute(
                 name: "Categories",
                 template: "categories",
                 defaults: new { Controller = "Categories", Action = "Index"});
+
+                routes.MapRoute(
+                name: "Categories-routing",
+                template: "categories/{action}/{id?}",
+                defaults: new { Controller = "Categories", action = "Details" });
 
                 routes.MapRoute(
                 name: "default",

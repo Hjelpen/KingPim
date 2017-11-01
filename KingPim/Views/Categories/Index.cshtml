@@ -5,10 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Categories</h2>
-
 <p>Create a new category!</p>
-
 <form asp-action="Create" enctype="multipart/form-data">
     <div class="col-md-6">
         <div class="form-group">
@@ -19,17 +16,21 @@
     </div>
 </form>
  
-<p>Create a new Subcategory!</p>
-
-
-
-@using (Html.BeginForm("CreateSubCategory", "Categories", FormMethod.Post))
+<h2>Categories</h2>
+@foreach (var category in Model.Categories)
 {
-    <div class="col-md-6">
-        <label asp-for="Name" class="control-label"></label>
-        <input asp-for="SubCategoryName" class="form-control" />     
-          @Html.DropDownList("Category", new SelectList(ViewBag.Categories, "CategoryID", "Name"))
-        <input type="submit" value="Create" class="btn btn-success pull-right" />
-        </div>
-
+    <li>@Html.ActionLink(category.Name, "Details", "Categories", new { Id = category.CategoryID }, null)</li>
+        
 }
+
+@*<p>Create a new Subcategory!</p>
+
+    @using (Html.BeginForm("CreateSubCategory", "Categories", FormMethod.Post))
+    {
+        <div class="col-md-6">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="SubCategoryName" class="form-control" />
+              @Html.DropDownList("Category", new SelectList(ViewBag.Categories, "CategoryID", "Name"))
+            <input type="submit" value="Create" class="btn btn-success pull-right" />
+        </div>
+    }*@

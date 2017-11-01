@@ -27,12 +27,17 @@ namespace KingPim.Controllers
         {
             ViewBag.Categories = _context.Categories.ToList();
 
-            return View();
+            CategoryViewModel vm = new CategoryViewModel();
+            vm.Categories = _context.Categories.ToList();
+
+            return View(vm);
         }
 
         // GET: Categories/Details/5
         public ActionResult Details(int id)
         {
+
+
             return View();
         }
 
