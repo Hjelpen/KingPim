@@ -8,8 +8,9 @@ namespace KingPim.Models
 {
     public class SubCategory
     {
+
         [Key]
-        public int Id { get; set; }
+        public int SubCategoryId { get; set; }
 
         [Required]
         public int CategoryID { get; set; }
@@ -23,5 +24,10 @@ namespace KingPim.Models
         public DateTime CreatedAt { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public ICollection<SubCategoryAttributeGroup> SubCategoryAttributeGroups { get; } = new List<SubCategoryAttributeGroup>();
+
+
+
     }
 }

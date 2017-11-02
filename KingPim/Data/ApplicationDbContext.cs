@@ -18,6 +18,7 @@ namespace KingPim.Data
       
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<AttributeGroup> AttributeGroups { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,6 +27,10 @@ namespace KingPim.Data
 
             builder.Entity<SubCategory>();
             builder.Entity<Category>();
+            builder.Entity<AttributeGroup>();
+
+            builder.Entity<SubCategoryAttributeGroup>()
+       .HasKey(t => new { t.SubCategoryId, t.AttributeGroupId });
         }
     }
 }
