@@ -1,25 +1,59 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int categoryId = 0;
 }
 
 @foreach (var item in ViewBag.CategoryInfo)
 {
-    <b>@item.Name</b>
-    <p>Created at: @item.CreatedAt</p> 
+    <h2>@item.Name</h2>
+    <p>Created at: @item.CreatedAt</p>
     <p>Last Modified: @item.LastModified</p>
     <p>Modified By: @item.ModifiedBy</p>
     <p>Version number: @item.VersionNumber</p>
-    <p>Published: @item.Published</p>
-    
-    <h1>Subcategories</h1>
-    @foreach (var subcategory in item.SubCategories)
-    {
-        if (subcategory.CategoryID == item.CategoryID)
-        {
-            <ul>@subcategory.Name</ul>
-        }
+    <p>Published: @item.Published</p> 
+        categoryId = item.CategoryID;
 
-    }
+
+    <h1>Subcategories</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Published</th>
+                    <th>Created At</th>
+                    <th>Last changed</th>
+                    <th>Modified by</th>
+                    <th>Version Number</th>
+                </tr>
+            </thead>
+            @foreach (var subcategory in item.SubCategories)
+                {
+                    if (subcategory.CategoryID == item.CategoryID)
+                    {
+                    <tbody>
+                        <tr>
+                            <td>@subcategory.Name</td>
+                            <td>@subcategory.Published</td>
+                            <td>@subcategory.CreatedAt</td>
+                            <td>@subcategory.LastModified</td>
+                            <td>@subcategory.ModifiedBy</td>
+                            <td>@subcategory.VersionNumber</td>
+                        </tr>
+                    </tbody>
+                }
+            }
+        </table>
+        </div>           
+  }
+
+@using (Html.BeginForm("CreateSubCategory", "Categories", new { category = categoryId }))
+{
+    <div class="col-md-6">
+        <h3>Add new Subcategory</h3>
+        @Html.TextBox("SubCategoryName")
+        <input type="submit" name="SaveButton" value="Save" />
+    </div>
 }

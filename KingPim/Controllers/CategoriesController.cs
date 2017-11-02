@@ -68,7 +68,7 @@ namespace KingPim.Controllers
                     CreatedAt = DateTime.UtcNow,
                     LastModified = DateTime.UtcNow,
                     Published = false,
-                    VersionNumber = 0 + 1,
+                    VersionNumber = 1,
                     ModifiedBy = User.Identity.Name,           
                     
                 };
@@ -95,7 +95,7 @@ namespace KingPim.Controllers
                     CreatedAt = DateTime.UtcNow,
                     LastModified = DateTime.UtcNow,
                     Published = false,
-                    VersionNumber = 0 + 1,
+                    VersionNumber = 1,
                     ModifiedBy = User.Identity.Name,
 
                 };
@@ -105,7 +105,7 @@ namespace KingPim.Controllers
 
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", new { id = category });
         }
 
         // GET: Categories/Edit/5
