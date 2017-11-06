@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "b24ad8ee6b9d445ecafd5a04b2c3313fc84b8b07"
+    "signature": "482e83be6a5b0736c3927b4d9687f0a22097b2e4"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
-          "bootstrap": "3.3.7"
+          "bootstrap": "4.0.0-beta",
+          "bootstrap.sass": "4.0.0-beta"
         },
         "runtime": {
           "KingPim.dll": {}
@@ -37,9 +38,16 @@
           "KingPim.dll": {}
         }
       },
-      "bootstrap/3.3.7": {
+      "bootstrap/4.0.0-beta": {
         "dependencies": {
-          "jQuery": "1.9.1"
+          "jQuery": "1.9.1",
+          "popper.js": "1.11.0"
+        }
+      },
+      "bootstrap.sass/4.0.0-beta": {
+        "dependencies": {
+          "jQuery": "1.9.1",
+          "popper.js": "1.11.0"
         }
       },
       "jQuery/1.9.1": {},
@@ -2512,6 +2520,7 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
+      "popper.js/1.11.0": {},
       "Remotion.Linq/2.1.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -4247,12 +4256,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "bootstrap/3.3.7": {
+    "bootstrap/4.0.0-beta": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3YTWhPNh6UcnUvzw9u6A2/hy2w0h4lznxPbX6FY47lFia3+Ib4zBixTpW6YieYA/b2fLXbkjoD59OjcVF3cJXw==",
-      "path": "bootstrap/3.3.7",
-      "hashPath": "bootstrap.3.3.7.nupkg.sha512"
+      "sha512": "sha512-vXc4BAnpmiIqwn2x9+lxPXndpY12BhoFHLZ6SpD04ghIGEFHFKPjqJyRjbBsbIWlefIMCXE83UqeCSMOHoB2LA==",
+      "path": "bootstrap/4.0.0-beta",
+      "hashPath": "bootstrap.4.0.0-beta.nupkg.sha512"
+    },
+    "bootstrap.sass/4.0.0-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l6uMuKHmMMmAI5rtnH7waV0bsScxvlo5ntRdkPP4yQh1Z255fMTZDA5SZVNIgtVyISe0DWV5Xj19wpGP/IX1Mw==",
+      "path": "bootstrap.sass/4.0.0-beta",
+      "hashPath": "bootstrap.sass.4.0.0-beta.nupkg.sha512"
     },
     "jQuery/1.9.1": {
       "type": "package",
@@ -5485,6 +5501,13 @@
       "sha512": "sha512-IDZOu8eEik53pGsBWgEzjHgguMeN0GI185koj9n607UGudK42NwoefLrPSpqj595uT6wYKyD6ClPyGmKuU+Vag==",
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
+    },
+    "popper.js/1.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hi4Cr+JLPGKknq0CJtgGkPUQTnMqRk5kLwMliCjaFbcrJB2QPqW7gGGUjzALHxJY2bv6B9Rzc684Xg6qj8//ow==",
+      "path": "popper.js/1.11.0",
+      "hashPath": "popper.js.1.11.0.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

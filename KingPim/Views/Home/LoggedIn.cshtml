@@ -2,31 +2,42 @@
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
-}
-
-@{
     ViewData["Title"] = "Logged In";
 }
 
-<h3>test!!!</h3>
+<script>
+    $(function () {
+        $('#Decor ul').hide(400);
+        $('#Decor li').on('click', function (e) {
+            e.stopPropagation();
+            $(this).children('ul').slideToggle();
+        });
+        $('#Decor a').not('[href="#"]').attr('target', '_blank');
+    });
+</script>
 
 <p>Category catalog</p>
-@foreach (var category in ViewBag.Categories)
-{
-    <li> @category.Name
 
-        @foreach (var subcategory in Model)
-        {
-            if (subcategory.CategoryID == category.CategoryID)
-            {
-                <ul>@subcategory.Name</ul>
-            }
-
-        }
-    </li>
-}
-   
-
-<form action="/categories" method="post">
-    <button class="btn btn-success">Manage Categories</button>
-</form>
+<ul id="Decor">
+    @foreach (var category in ViewBag.Categories)
+    {
+        <li class="level1">
+            @category.Name
+            <ul>
+                <li class="level2">
+                   @foreach (var subcategory in Model)
+                   {
+                       if (subcategory.CategoryID == category.CategoryID)
+                       {                                                 
+                               <li>
+                                   @subcategory.Name
+                               </li>                  
+                       }
+                   }
+             </ul>
+        </li>      
+     }
+</ul>
+            <form action="/categories" method="post">
+                <button class="btn btn-success">Manage Categories</button>
+            </form>
