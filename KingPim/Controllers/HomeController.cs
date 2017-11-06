@@ -34,6 +34,16 @@ namespace KingPim.Controllers
 
         }
 
+        public ActionResult GetSubCategory(int id)
+        {
+            var subcategory = _context.SubCategories.
+                Where(x => x.SubCategoryId == id);
+
+            return PartialView("_SubCategoryPartial", subcategory);
+
+        }
+
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

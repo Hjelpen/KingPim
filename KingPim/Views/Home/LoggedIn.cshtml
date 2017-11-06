@@ -6,6 +6,26 @@
 }
 
 <script>
+    $(document).ready(function () {
+       $(function () {
+        $('.getinfo').click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+
+            $.ajax({
+                url: '@Url.Action("GetSubCategory")',
+                type: 'GET',
+                data: { Id: id },
+                dataType: "html",
+                success: function (partialView) {
+                    $("#SubCategoryInfo").html(partialView);
+                    $("#SubCategoryInfo").show();
+                }
+            });
+        });
+    });
+});
+
     $(function () {
         $('#Decor ul').hide(400);
         $('#Decor li').on('click', function (e) {
@@ -14,30 +34,40 @@
         });
         $('#Decor a').not('[href="#"]').attr('target', '_blank');
     });
+
+
 </script>
 
-<p>Category catalog</p>
+<div class="outer">
 
-<ul id="Decor">
-    @foreach (var category in ViewBag.Categories)
-    {
-        <li class="level1">
-            @category.Name
-            <ul>
-                <li class="level2">
-                   @foreach (var subcategory in Model)
-                   {
-                       if (subcategory.CategoryID == category.CategoryID)
-                       {                                                 
-                               <li>
-                                   @subcategory.Name
-                               </li>                  
-                       }
-                   }
-             </ul>
-        </li>      
-     }
-</ul>
-            <form action="/categories" method="post">
-                <button class="btn btn-success">Manage Categories</button>
-            </form>
+    <div class="Category">
+        <p>Category catalog</p>
+        <ul id="Decor">
+            @foreach (var category in ViewBag.Categories)
+            {
+                <li class="level1">
+                    @category.Name
+                    <ul>
+                        <li class="level2">
+                            @foreach (var subcategory in Model)
+                            {
+                                if (subcategory.CategoryID == category.CategoryID)
+                                {
+                                <li>
+                                    <a href="#" class="getinfo" data-id="@subcategory.SubCategoryId">@subcategory.Name</a>
+                                </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+            }
+        </ul>
+        <form action="/categories" method="post">
+            <button class="btn btn-success">Manage Categories</button>
+        </form>
+    </div>
+
+    <div id="SubCategoryInfo">
+    </div>
+
+</div>

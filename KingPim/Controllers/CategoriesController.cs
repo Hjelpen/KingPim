@@ -108,6 +108,29 @@ namespace KingPim.Controllers
             return RedirectToAction("Details", new { id = category });
         }
 
+
+        public ActionResult GetSubCategory(int id)
+        {
+            var subcategory = _context.SubCategories.
+                Where(x => x.SubCategoryId == id);
+
+            SubCategory sub = new SubCategory();
+            {
+                foreach (var item in subcategory)
+                {
+                    sub.Name = item.Name;
+                    sub.LastModified = item.LastModified;
+                    sub.CreatedAt = item.CreatedAt;
+                    sub.ModifiedBy = item.ModifiedBy;
+                    sub.VersionNumber = item.VersionNumber;
+                    sub.Published = item.Published;
+                }
+            }
+
+            return PartialView("_SubCategoryPartial", sub);
+
+        }
+
         // GET: Categories/Edit/5
         public ActionResult Edit(int id)
         {

@@ -77,6 +77,11 @@ namespace KingPim
                 defaults: new { Controller = "Categories", action = "Details" });
 
                 routes.MapRoute(
+                name: "SubCategories-routing",
+                template: "subcategories/{action}/{id?}",
+                defaults: new { Controller = "Categories", action = "SubCategoryDetails" });
+
+                routes.MapRoute(
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
 

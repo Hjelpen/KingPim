@@ -36,7 +36,6 @@
 
 #Decor {
     width: 200px;
-    background-color: #F4F4EE;
 }
 
     #Decor, #Decor ul {
@@ -62,4 +61,22 @@
 
 .opened {
     background-position: left -10px;
+}
+
+div.Outer {
+    width: 350px;
+    position: relative;
+    clear: both;
+}
+
+div.Category {
+    width: 50%;
+    position: relative;
+    float: left;
+}
+
+div.SubCategoryInfo {
+    width: 49%;
+    position: relative;
+    float: right;
 }

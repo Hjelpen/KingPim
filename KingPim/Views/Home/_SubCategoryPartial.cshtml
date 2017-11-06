@@ -1,0 +1,14 @@
+﻿@model IEnumerable<KingPim.Models.SubCategory>
+
+
+@foreach(var item in Model)
+{
+   <h1>@item.Name</h1> 
+   <b>Created at:</b> @item.CreatedAt <b>Published:</b> @item.Published <b>Last modified:</b> @item.LastModified
+   <b>Modified by:</b> @item.ModifiedBy <b>Version:</b> @item.VersionNumber
+    <br />
+
+    <button class="btn-primary" onclick="location.href='@Url.Action("SubCategoryDetails", "Categories", new {Id = item.SubCategoryId }, null)'">Edit</button>
+}
+<hr />
+<h2>Products:</h2>
