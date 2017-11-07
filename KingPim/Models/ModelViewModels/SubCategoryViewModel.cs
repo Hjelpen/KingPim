@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KingPim.Models
+namespace KingPim.Models.ModelViewModels
 {
-    public class SubCategory
-    {
+    public class SubCategoryViewModel
 
-        [Key]
+    {
         public int SubCategoryId { get; set; }
 
-        [Required]
-        public int CategoryID { get; set; }
-        [Required]
         public string Name { get; set; }
 
         public DateTime LastModified { get; set; }
@@ -23,11 +18,6 @@ namespace KingPim.Models
         public bool Published { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public virtual Category Category { get; set; }
-
-        public ICollection<SubCategoryAttributeGroup> SubCategoryAttributeGroups { get; set; }
-
-
-
+        public List<AttributeGroup> AttributeGroups { get; set; }
     }
 }

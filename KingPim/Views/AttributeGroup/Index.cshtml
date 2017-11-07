@@ -1,4 +1,6 @@
-﻿@{
+﻿@model KingPim.Models.AttributeGroup
+
+@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
@@ -6,4 +8,12 @@
     ViewData["Title"] = "Attributes";
 }
 
-<h1>Attributes test!!</h1>
+@using (Html.BeginForm("Create", "AttributeGroup"))
+{
+    <div class="col-md-6">
+        <h3>Create a new attribute group</h3>
+        @Html.TextBox("AttributeGroupName")
+        <input type="submit" name="SaveButton" value="Save" />
+    </div>
+}
+

@@ -23,6 +23,8 @@ namespace KingPim.Controllers
         // GET: AttributeGroup
         public ActionResult Index()
         {
+
+
             return View();
         }
 
@@ -49,9 +51,11 @@ namespace KingPim.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return View();
-            
+            return RedirectToAction("Index");
+
         }
+
+
 
         // GET: AttributeGroup/Edit/5
         public ActionResult Edit(int id)

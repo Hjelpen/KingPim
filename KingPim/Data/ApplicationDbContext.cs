@@ -19,6 +19,7 @@ namespace KingPim.Data
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<AttributeGroup> AttributeGroups { get; set; }
+        public DbSet<SubCategoryAttributeGroup> SubCategoryAttributeGroup { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

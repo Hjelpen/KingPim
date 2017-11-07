@@ -49,6 +49,53 @@ namespace KingPim.Controllers
             return View(categoryInfo);
         }
 
+        public ActionResult SubCategoryDetails(int id)
+        {
+
+            var data = _context.SubCategoryAttributeGroup
+                .Include(x => x.AttributeGroup)
+                .Include(y => y.SubCategory)
+                .Where(x => x.SubCategoryId == id);
+
+            
+
+            SubCategoryViewModel subCategoryViewModel = new SubCategoryViewModel();
+            List<AttributeGroup> list = new List<AttributeGroup>();
+            subCategoryViewModel.SubCategoryId = id;
+            {
+                foreach (var item in data)
+                {
+                    subCategoryViewModel.Name = item.SubCategory.Name;
+                    subCategoryViewModel.CreatedAt = item.SubCategory.CreatedAt;
+                    subCategoryViewModel.LastModified = item.SubCategory.LastModified;
+                    subCategoryViewModel.ModifiedBy = item.SubCategory.ModifiedBy;
+                    subCategoryViewModel.Published = item.SubCategory.Published;
+                    subCategoryViewModel.VersionNumber = item.SubCategory.VersionNumber;
+                    list.Add(item.AttributeGroup);
+                    subCategoryViewModel.AttributeGroups = list;
+                }
+            }
+
+            ViewBag.AttributeGroups = new SelectList(_context.AttributeGroups, "AttributeGroupId", "AttributeGroupName");
+
+            return View(subCategoryViewModel);
+        }
+
+        public IActionResult AtttributeGroupSubCategory(AttributeGroup group, int id)
+        {
+
+            SubCategoryAttributeGroup subCategoryAttributeGroup = new SubCategoryAttributeGroup();
+            {
+                subCategoryAttributeGroup.AttributeGroupId = group.AttributeGroupId;
+                subCategoryAttributeGroup.SubCategoryId = id;
+            }
+
+            _context.Add(subCategoryAttributeGroup);
+            _context.SaveChangesAsync();
+
+            return RedirectToAction("SubCategoryDetails", new { id = id });
+        }
+
         // GET: Categories/Create
         public ActionResult Create()
         {

@@ -1,0 +1,42 @@
+﻿@model KingPim.Models.ModelViewModels.SubCategoryViewModel
+
+@{
+    ViewData["Title"] = "SubCategory Details.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = Model.SubCategoryId;
+    
+}
+
+<div id="SubCategoyDetails">
+    <h1>@Model.Name</h1>
+    <b>Created at:</b> @Model.CreatedAt <b>Last modified:</b> @Model.LastModified
+    <br />
+    <b>Modified by:</b> @Model.ModifiedBy <b>Version:</b> @Model.VersionNumber
+    <br />
+    <b>Published:</b> @Model.Published
+    <hr />
+</div>
+
+<div id="AttachAttributeGroup">
+    <b>Attach an Attributegroup to this subcategory</b>
+    <br />
+@using (Html.BeginForm("AtttributeGroupSubCategory", "Categories", new { Id = id }))
+{
+    @Html.DropDownList("AttributeGroupId", (SelectList)ViewBag.AttributeGroups)
+    <input type="submit" class="btn btn-success" name="SaveButton" value="Save" />
+}
+    @if (Model.AttributeGroups != null)
+    {
+        <div>
+            <h2>Attribute Groups</h2>
+            <ul>
+                @foreach (var item in Model.AttributeGroups)
+                {
+                    <li>@item.AttributeGroupName</li>
+                }
+            </ul>
+
+        </div>
+    }
+
+ </div>
