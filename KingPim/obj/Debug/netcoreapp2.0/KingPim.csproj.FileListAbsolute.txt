@@ -22,3 +22,15 @@ C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.A
 C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.dll
 C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.pdb
 C:\Users\EricL\Desktop\KingPim\KingPim\KingPim\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.deps.json
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.runtimeconfig.json
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.runtimeconfig.dev.json
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.dll
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\bin\Debug\netcoreapp2.0\KingPim.pdb
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.csproj.CoreCompileInputs.cache
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.AssemblyInfoInputs.cache
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.AssemblyInfo.cs
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.dll
+C:\Users\Eric\Desktop\Skolarbete\KingPim\KingPim\obj\Debug\netcoreapp2.0\KingPim.pdb
