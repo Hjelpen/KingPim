@@ -14,6 +14,8 @@ namespace KingPim.Models
         public int AttributeGroupId { get; set; }
 
         public ICollection<SubCategoryAttributeGroup> SubCategoryAttributeGroups { get; set; }
+
+        public List<Attribute> Attribute { get; set; }
     }
         
 }

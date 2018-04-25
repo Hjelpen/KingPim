@@ -15,11 +15,16 @@ namespace KingPim.Data
             : base(options)
         {
         }
-      
+
+        public DbSet<Models.Attribute> Attributes { get; set; }
+        public DbSet<AttributeValue> AttributeValues { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<AttributeGroup> AttributeGroups { get; set; }
         public DbSet<SubCategoryAttributeGroup> SubCategoryAttributeGroup { get; set; }
+        public DbSet<Product> Products { get; set;}
+     
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)

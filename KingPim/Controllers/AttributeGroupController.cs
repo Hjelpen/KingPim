@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using KingPim.Models;
 using KingPim.Data;
+using KingPim.Models.ModelViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace KingPim.Controllers
@@ -13,7 +14,7 @@ namespace KingPim.Controllers
     [Authorize]
     public class AttributeGroupController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public AttributeGroupController(ApplicationDbContext context)
         {
@@ -24,9 +25,19 @@ namespace KingPim.Controllers
         public ActionResult Index()
         {
 
+            AttributeGroupViewModel viewModel = new AttributeGroupViewModel();
+            viewModel.AttributeGroups = _context.AttributeGroups.ToList();
+        
+            return View(viewModel);
+        }
+
+        public ActionResult CreateAttribute(int id)
+        {
+
 
             return View();
         }
+
 
         // GET: AttributeGroup/Details/5
         public ActionResult Details(int id)
@@ -54,8 +65,6 @@ namespace KingPim.Controllers
             return RedirectToAction("Index");
 
         }
-
-
 
         // GET: AttributeGroup/Edit/5
         public ActionResult Edit(int id)

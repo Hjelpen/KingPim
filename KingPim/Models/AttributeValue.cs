@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace KingPim.Models
 {
-    public class Attribute
+    public class AttributeValue
     {
         public int Id { get; set; }
+        [ForeignKey("Product")]
+        [JsonIgnore]
+        public int ProductId { get; set; }
+        [JsonIgnore]
+        public Product Product { get; set; }
+        [ForeignKey("Attribute")]
+        public int AttributeId { get; set; }
+        public Attribute Attribute { get; set; }
         [ForeignKey("AttributeGroup")]
         [JsonIgnore]
         public int? AttributeGroupId { get; set; }
         [JsonIgnore]
         public AttributeGroup AttributeGroup { get; set; }
-        [JsonIgnore]
-        public List<AttributeValue> AttributeValue { get; set; }
-        public string Name { get; set; }
-        public ValueType ValueType { get; set; }
+        public string Value { get; set; }
     }
 }

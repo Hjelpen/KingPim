@@ -1,4 +1,4 @@
-﻿@model KingPim.Models.AttributeGroup
+﻿@model KingPim.Models.ModelViewModels.AttributeGroupViewModel
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -15,5 +15,10 @@
         @Html.TextBox("AttributeGroupName")
         <input type="submit" name="SaveButton" value="Save" />
     </div>
+}
+
+@foreach (var item in Model.AttributeGroups.ToList())
+{
+    <li>@Html.ActionLink(item.AttributeGroupName, "CreateAttribute", "AttributeGroup", new { Id = item.AttributeGroupId }, null)</li>
 }
 
