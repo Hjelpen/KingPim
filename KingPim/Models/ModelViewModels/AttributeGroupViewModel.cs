@@ -7,7 +7,7 @@ namespace KingPim.Models.ModelViewModels
 {
     public class AttributeGroupViewModel
     {
-        public List<AttributeGroup> AttributeGroups { get; set; }
-
+        public List<AttributeGroup> AttributeGroup { get; set; }
+        public AttributeFormViewModel Form { get; set; }
     }
 }
