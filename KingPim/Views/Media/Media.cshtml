@@ -1,0 +1,51 @@
+﻿@model KingPim.Models.ModelViewModels.MediaFileGroupViewModel
+@{
+    ViewData["Title"] = "Media";
+}
+<div>
+    <div class="row">
+        <h2>Create a new media group!</h2>
+        <form asp-action="CreateGroup" enctype="multipart/form-data">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div>
+        <h2>Upload file!</h2>
+        <form method="post">
+            <div>
+                <b>Media File Group:</b> <br />
+                @Html.DropDownList("Id", (SelectList)ViewBag.MediaFileGroups)
+            </div>
+            <br />
+
+            <div>
+                <b>File to upload: </b> <br />
+                <input type="file" name="test" />
+            </div>
+            <br />
+
+            <div>
+                <b>File type:</b> <br />
+
+            </div>
+            <br />
+
+            <input type="submit" value="Submit" class="submit" />
+        </form>
+    </div>
+</div>
+
+
+@section scripts
+    {
+
+    <script type="text/javascript">
+    </script>
+}

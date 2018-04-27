@@ -23,7 +23,10 @@ namespace KingPim.Data
         public DbSet<AttributeGroup> AttributeGroups { get; set; }
         public DbSet<SubCategoryAttributeGroup> SubCategoryAttributeGroup { get; set; }
         public DbSet<Product> Products { get; set;}
-     
+        public DbSet<MediaFileGroup> MediaFileGroup { get; set; }
+        public DbSet<MediaFile> MediaFiles { get; set; }
+
+
 
 
 

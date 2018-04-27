@@ -150,7 +150,27 @@ namespace KingPim.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("KingPim.Models.Product", b =>
+            modelBuilder.Entity("KingPim.Models.MediaFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("MainFile");
+
+                    b.Property<int?>("MediaFileGroupId");
+
+                    b.Property<int>("MediaType");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediaFileGroupId");
+
+                    b.ToTable("MediaFile");
+                });
+
+            modelBuilder.Entity("KingPim.Models.MediaFileGroup", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -165,11 +185,38 @@ namespace KingPim.Migrations
 
                     b.Property<bool>("Published");
 
+                    b.Property<int>("VersionNumber");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MediaFileGroup");
+                });
+
+            modelBuilder.Entity("KingPim.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<DateTime>("LastModified");
+
+                    b.Property<int>("MediaFileGroupId");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("Published");
+
                     b.Property<int>("SubcategoryId");
 
                     b.Property<int>("VersionNumber");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MediaFileGroupId")
+                        .IsUnique();
 
                     b.HasIndex("SubcategoryId");
 
@@ -350,8 +397,20 @@ namespace KingPim.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("KingPim.Models.MediaFile", b =>
+                {
+                    b.HasOne("KingPim.Models.MediaFileGroup")
+                        .WithMany("MediaFile")
+                        .HasForeignKey("MediaFileGroupId");
+                });
+
             modelBuilder.Entity("KingPim.Models.Product", b =>
                 {
+                    b.HasOne("KingPim.Models.MediaFileGroup", "MediaFileGroup")
+                        .WithOne("Product")
+                        .HasForeignKey("KingPim.Models.Product", "MediaFileGroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("KingPim.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubcategoryId")

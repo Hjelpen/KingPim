@@ -44,30 +44,36 @@
         <p>Category catalog</p>
         <ul id="Decor">
             @foreach (var category in ViewBag.Categories)
-            {
-                <li class="level1">
-                    @category.Name
-                    <ul>
-                        <li class="level2">
-                            @foreach (var subcategory in Model)
-                            {
-                                if (subcategory.CategoryID == category.CategoryID)
-                                {
-                                <li>
-                                    <a href="#" class="getinfo" data-id="@subcategory.SubCategoryId">@subcategory.Name</a>
-                                </li>
-                                }
-                            }
-                        </ul>
-                    </li>
+        {
+            <li class="level1">
+                @category.Name
+                <ul>
+                    <li class="level2">
+                        @foreach (var subcategory in Model)
+                    {
+                        if (subcategory.CategoryID == category.CategoryID)
+                        {
+                        <li>
+                            <a href="#" class="getinfo" data-id="@subcategory.SubCategoryId">@subcategory.Name</a>
+                        </li>
+                }
             }
+                    </ul>
+                </li>
+        }
         </ul>
         <form action="/categories" method="post">
             <button class="btn btn-success">Manage Categories</button>
         </form>
+        <br />
+        <div>
+            <form method="post" action="@Url.Action("Media", "Media")">
+                <button class="btn btn-success">Create new media asset group</button>
+            </form>
+        </div>
     </div>
-
-    <div id="SubCategoryInfo">
-    </div>
-
 </div>
+
+<div id="SubCategoryInfo">
+</div>
+

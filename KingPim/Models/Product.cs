@@ -10,16 +10,26 @@ namespace KingPim.Models
     public class Product
     {
         public int Id { get; set; }
-
+        
+        //subcategory
         [ForeignKey("Subcategory")]
         [JsonIgnore]
         public int SubcategoryId { get; set; }
         [JsonIgnore]
         public SubCategory SubCategory { get; set; }
+        
+        //media file
+        [ForeignKey("MediaFileGroup")]
+        [JsonIgnore]
+        public int MediaFileGroupId { get; set; }
+        [JsonIgnore]
+        public MediaFileGroup MediaFileGroup{ get; set; }
+
         public string Name { get; set; }
         public List<AttributeValue> AttributeValue { get; set; }
 
-         //system specific
+
+        //system specific
         public DateTime LastModified { get; set; }
         public string ModifiedBy { get; set; }
         public int VersionNumber { get; set; }
