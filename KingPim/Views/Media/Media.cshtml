@@ -1,4 +1,5 @@
 ﻿@model KingPim.Models.ModelViewModels.MediaFileGroupViewModel
+@using MediaType = KingPim.Models.MediaType
 @{
     ViewData["Title"] = "Media";
 }
@@ -18,34 +19,73 @@
     <hr />
     <div>
         <h2>Upload file!</h2>
-        <form method="post">
+        <form class="col-12 form-group-file" asp-action="AddFiles" method="post" enctype="multipart/form-data">
             <div>
                 <b>Media File Group:</b> <br />
                 @Html.DropDownList("Id", (SelectList)ViewBag.MediaFileGroups)
             </div>
             <br />
-
             <div>
                 <b>File to upload: </b> <br />
-                <input type="file" name="test" />
+                <input type="file" name="file" />
             </div>
             <br />
-
-            <div>
-                <b>File type:</b> <br />
-
+            <label for="fileType">Select file type:</label>
+            <select class="form-control" id="fileType">
+                <option>Image</option>
+                <option>Document</option>
+            </select>
+            <br />
+            <div id="imageInfo">
+                <label for="ImageAltText">Enter alt-text for the image:</label>
+                <input asp-for="ImageAltText" class="form-control" id="ImageAltText"/>
+                <br />
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="MainImage">
+                    <label class="form-check-label" for="MainImage">
+                        Main Image
+                    </label>
+                    <br />
+                </div>
+            </div>
+            <div id="documentInfo" style="display: none;">
+                <label for="documentType">Select document type:</label>
+                <select asp-for="@Model.MediaType" class="form-control" id="mediaType">
+                    <option value="">Value Type</option>
+                    @foreach (var media in Enum.GetValues(typeof(MediaType)))
+                     {
+                   <option value="@media">@media</option>
+                     }
+                </select>
+                <br />
             </div>
             <br />
-
-            <input type="submit" value="Submit" class="submit" />
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
         </form>
     </div>
 </div>
 
-
 @section scripts
     {
-
     <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#fileType").on('change', function () {
+                if (this.value == 'Image') {
+                    $("#imageInfo").css("display", "");
+                    $("#documentInfo").css("display", "none");
+                    $("#mediaType").removeAttr('required')                  
+                };
+                if (this.value == 'Document') {
+                    $("#imageInfo").css("display", "none");
+                    $("#documentInfo").css("display", "");
+                    $("#mediaType").attr('required', true)
+                };
+            });
+
+
+        });
     </script>
 }

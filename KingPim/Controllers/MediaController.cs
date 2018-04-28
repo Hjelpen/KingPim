@@ -26,7 +26,7 @@ namespace KingPim.Controllers
             viewModel.MediaFileGroups = _context.MediaFileGroup.ToList();
 
 
-           ViewBag.MediaFileGroups = new SelectList(_context.MediaFileGroup, "Id", "Name");
+            ViewBag.MediaFileGroups = new SelectList(_context.MediaFileGroup, "Id", "Name");
 
             return View(viewModel);
         }
@@ -34,7 +34,7 @@ namespace KingPim.Controllers
         public async Task<IActionResult> CreateGroup(string name)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 MediaFileGroup mediaFileGroup = new MediaFileGroup
                 {
@@ -50,6 +50,14 @@ namespace KingPim.Controllers
                 _context.Add(mediaFileGroup);
                 await _context.SaveChangesAsync();
             }
+
+
+            return RedirectToAction(nameof(Media));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFiles(ICollection<IFormFile> file, string ImageAltText, bool MainImage, string MediaType)
+        {
 
 
             return RedirectToAction(nameof(Media));

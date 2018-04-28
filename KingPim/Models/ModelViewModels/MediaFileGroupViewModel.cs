@@ -11,5 +11,10 @@ namespace KingPim.Models.ModelViewModels
 
         public string Name { get; set; }
 
+        public string ImageAltText { get; set; }
+
+        public MediaType MediaType { get; set; }
+
+        public bool MainImage { get; set; }
     }
 }
