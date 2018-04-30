@@ -22,7 +22,7 @@
         <form class="col-12 form-group-file" asp-action="AddFiles" method="post" enctype="multipart/form-data">
             <div>
                 <b>Media File Group:</b> <br />
-                @Html.DropDownList("Id", (SelectList)ViewBag.MediaFileGroups)
+                @Html.DropDownList("Id", (SelectList)ViewBag.MediaFileGroups, new { @class = "form-control" })
             </div>
             <br />
             <div>
@@ -41,11 +41,7 @@
                 <input asp-for="ImageAltText" class="form-control" id="ImageAltText"/>
                 <br />
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="MainImage">
-                    <label class="form-check-label" for="MainImage">
-                        Main Image
-                    </label>
-                    <br />
+                    <b>Main file:  @Html.CheckBoxFor(x => x.MainImage)</b>
                 </div>
             </div>
             <div id="documentInfo" style="display: none;">
@@ -84,7 +80,7 @@
                     $("#mediaType").attr('required', true)
                 };
             });
-
+          
 
         });
     </script>

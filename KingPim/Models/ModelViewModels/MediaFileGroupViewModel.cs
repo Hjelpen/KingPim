@@ -16,5 +16,7 @@ namespace KingPim.Models.ModelViewModels
         public MediaType MediaType { get; set; }
 
         public bool MainImage { get; set; }
+
+
     }
 }
